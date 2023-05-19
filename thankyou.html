@@ -2,9 +2,35 @@
 <html>
 <head>
     <title>Thank You</title>
+    <script>
+        // Function to get cookie
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        window.onload = function() {
+            // Get UTM data from cookie
+            let utm_data = JSON.parse(getCookie("utm_data"));
+
+            // Display UTM data
+            for (let key in utm_data) {
+                document.body.innerHTML += `<p>${key}: ${utm_data[key]}</p>`;
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Thank You!</h1>
-    <a href="index.html">Back to Home</a>
 </body>
 </html>
