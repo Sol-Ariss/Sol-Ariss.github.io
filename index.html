@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello, World!</title>
+    <title>Home</title>
+    <script>
+        // Function to get UTM parameters
+        function getUTMParameters() {
+            let params = {};
+            let parts = window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+                params[key] = value;
+            });
+            return params;
+        }
+
+        // Function to set cookie
+        function setCookie(cname, cvalue, exdays) {
+            let d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        window.onload = function() {
+            // Get UTM parameters and convert to string
+            let params = JSON.stringify(getUTMParameters());
+
+            // Store UTM parameters in a cookie
+            setCookie("utm_data", params, 7);
+
+            // Redirect to thank you page
+            window.location.href = "thankyou.html";
+        }
+    </script>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <a href="redirect.html">Go to Redirect page</a>
 </body>
 </html>
