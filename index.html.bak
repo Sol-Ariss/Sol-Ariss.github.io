@@ -29,7 +29,7 @@
 
             // Redirect to thank you page
             //window.location.href = "thankyou.html";
-			window.location.href = "https://chrome.google.com/webstore/detail/cutecatstab/gelilmhbeanleamfmhkmdnkgaomilolh";
+			window.location.href = "https://chrome.google.com/webstore/detail/cutecatstab/gelilmhbeanleamfmhkmdnkgaomilolh/related";
         }
     </script>
 </head>
