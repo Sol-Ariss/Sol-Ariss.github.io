@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-7XDBP64GBJ"></script>
 	<script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
-
 	gtag('config', 'G-7XDBP64GBJ');
 	</script>
+	
+	
+	
+	
 
     <title>Thank You</title>
     <script>
@@ -38,6 +39,16 @@
             for (let key in utm_data) {
                 document.body.innerHTML += `<p>${key}: ${utm_data[key]}</p>`;
             }
+			
+			// Track custom redirect event
+			gtag('event', 'custom_extension_install', {
+				'event_category': 'extension_tracking',
+				'event_action': 'install',
+				'event_label': 'Test-Test'
+			});
+			gtag('sendGoal', 'extension_install', 100, 30, {
+				eventLabel: 'test-test'
+			});
         }
     </script>
 </head>

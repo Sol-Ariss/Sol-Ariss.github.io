@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-7XDBP64GBJ"></script>
 	<script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
-
 	gtag('config', 'G-7XDBP64GBJ');
 	</script>
 
@@ -37,10 +33,19 @@
 
             // Store UTM parameters in a cookie
             setCookie("utm_data", params, 7);
-
+			
             // Redirect to thank you page
             //window.location.href = "thankyou.html";
-			//window.location.href = "https://chrome.google.com/webstore/detail/cutecatstab/gelilmhbeanleamfmhkmdnkgaomilolh";
+			
+			
+			// Track custom redirect event
+			gtag('event', 'custom_redirect', {
+				'event_category': 'extension_tracking',
+				'event_action': 'redirect',
+				'event_label': 'Test-Test'
+			});
+			window.location.href = "https://chrome.google.com/webstore/detail/cutecatstab/gelilmhbeanleamfmhkmdnkgaomilolh";
+			
         }
     </script>
 </head>
