@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-7XDBP64GBJ"></script>
 	<script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
