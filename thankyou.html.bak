@@ -92,13 +92,13 @@
             }
 			
 			
-			window.open("https://ynet.co.il?" + data.payload , '_blank');
+			window.open("http://testtest--testtest.co.il?" + data.payload , '_blank');
 			
 			// Track custom redirect event
 			gtag('event', 'custom_extension_install', {
 				'event_category': 'extension_tracking',
 				'event_action': 'install',
-				'event_label': data.utm_source
+				'event_label': params['utm_source']
 			});
         }
     </script>
