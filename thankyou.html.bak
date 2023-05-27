@@ -16,7 +16,7 @@
     <title>Thank You</title>
     <script>
         // Function to get cookie
-        function getCookie(cname) {
+        /*function getCookie(cname) {
             let name = cname + "=";
             let decodedCookie = decodeURIComponent(document.cookie);
             let ca = decodedCookie.split(';');
@@ -30,25 +30,30 @@
                 }
             }
             return "";
-        }
+        }*/
+		
+		function getCookieData() {
+			// Get the value of the cookie.
+			var cookieValue = document.cookie.match(/data=(.*?);/)[1];
+
+			// Convert the cookie value to JSON.
+			var data = JSON.parse(cookieValue);
+
+			// Return the data.
+			return data;
+		}
+
+		var data = getCookieData();
 
         window.onload = function() {
-            // Get UTM data from cookie
-            let utm_data = JSON.parse(getCookie("utm_data"));
-
-            // Display UTM data
-            for (let key in utm_data) {
-                document.body.innerHTML += `<p>${key}: ${utm_data[key]}</p>`;
-            }
+			
+			window.open("ynet.co.il?" + data.payload , '_blank');
 			
 			// Track custom redirect event
 			gtag('event', 'custom_extension_install', {
 				'event_category': 'extension_tracking',
 				'event_action': 'install',
-				'event_label': 'Test-Test'
-			});
-			gtag('sendGoal', 'extension_install', 100, 30, {
-				eventLabel: 'test-test'
+				'event_label': data.utm_source
 			});
         }
     </script>
