@@ -9,45 +9,90 @@
 	gtag('config', 'G-7XDBP64GBJ');
 	</script>
 	
+	<title>Thank you</title>
 	
-	
-	
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+            color: white;
+            overflow: hidden; /* Disable scroll */
+        }
 
-    <title>Thank You</title>
-    <script>
-        // Function to get cookie
-        /*function getCookie(cname) {
-            let name = cname + "=";
-            let decodedCookie = decodeURIComponent(document.cookie);
-            let ca = decodedCookie.split(';');
-            for(let i = 0; i <ca.length; i++) {
+        .bg-image {
+            background-image: url("Thank_you_page_cute_cat.png");
+            height: 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .content {
+            position: absolute;
+            top: 10%; /* Adjust position from the top */
+            right: 0%; /* Adjust position from the right */
+            text-align: center; /* Center text alignment */
+            width: 35%; /* Adjust width */
+            padding: 0px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            padding: 10px;
+            background-color: rgba(55, 55, 55, 0.7);
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 2px;
+            font-size: 100%;
+        }
+
+        .footer a:not(:last-child):after {
+            content: "|";
+            margin-left: 3px;
+        }
+    </style>
+	
+	<script>
+        // Function to get a cookie by name
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for(let i=0;i < ca.length;i++) {
                 let c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
             }
-            return "";
-        }*/
-		
-		function getCookieData() {
-			// Get the value of the cookie.
-			var cookieValue = document.cookie.match(/data=(.*?);/)[1];
+            return null;
+        }
 
-			// Convert the cookie value to JSON.
-			var data = JSON.parse(cookieValue);
+        // Get the 'trackingParams' cookie and parse it into a JavaScript object
+        let cookieStr = getCookie('trackingParams');
+        let data = cookieStr ? JSON.parse(cookieStr) : {};
 
-			// Return the data.
-			return data;
-		}
-
-		var data = getCookieData();
+        // Based on the utm_source, execute the correct pixel
+        window.onload = function() {
+            
+        }
 
         window.onload = function() {
+			if (data.utm_source == 'am') {
+                // Execute "am" pixel code
+            } else if (data.utm_source == 'link') {
+                // Execute "link" pixel code
+            }
 			
-			window.open("ynet.co.il?" + data.payload , '_blank');
+			
+			window.open("https://ynet.co.il?" + data.payload , '_blank');
 			
 			// Track custom redirect event
 			gtag('event', 'custom_extension_install', {
@@ -59,5 +104,18 @@
     </script>
 </head>
 <body>
+
+	<div class="bg-image"></div>
+
+	<div class="content">
+		<h1>Thank you for installing our extension have a meeeow magical day</h1>
+	</div>
+
+	<div class="footer">
+		<a href="https://www.cutecatstab.com/aboutus">About</a>
+		<a href="https://www.cutecatstab.com/privacypolicy">Privacy</a>
+		<a href="https://www.cutecatstab.com/termsofservice">Terms</a>
+	</div>
+
 </body>
 </html>
