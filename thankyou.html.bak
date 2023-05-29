@@ -110,8 +110,8 @@
 				});
             } else if (data.utm_source == 'link') {
                 // Execute "link" pixel code
-            } else {
-				// Track custom redirect event
+            } else { //Conversion but not from one of the know sources
+				// Track custom install event
 				gtag('event', 'custom_extension_install', {
 					'event_category': 'extension_tracking',
 					'event_action': 'install',
