@@ -86,7 +86,7 @@
 			
 		var postbackURL = "";
 
-		if(!params['debug_mode']) {
+		if(!data['debug_mode']) {
 			window.onload = function() {
 				switch (data.utm_source) {
 					case 'am':
