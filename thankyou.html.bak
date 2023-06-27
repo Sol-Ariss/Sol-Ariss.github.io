@@ -86,65 +86,67 @@
 			
 		var postbackURL = "";
 
-        window.onload = function() {
-			switch (data.utm_source) {
-				case 'am':
-					// URL to be fired
-					postbackURL = "https://nossl.dergoodting.com/pixel?unique_req=" + data['click_id'];
+		if(!params['debug_mode']) {
+			window.onload = function() {
+				switch (data.utm_source) {
+					case 'am':
+						// URL to be fired
+						postbackURL = "https://nossl.dergoodting.com/pixel?unique_req=" + data['click_id'];
 
-					// Fire the POSTback URL
-					fetch(postbackURL)
-						.then((response) => {
-							// Handle response if needed
-							console.log("POSTback AM successful");
-						})
-						.catch((error) => {
-							// Handle response if needed
-							console.log("POSTback AM Error");
-						})
-						
-					// Track custom install event
-					gtag('event', 'custom_extension_install', {
-						'event_category': 'extension_tracking',
-						'event_action': 'install',
-						'event_label': data['utm_source'],
-						'custom_subsource' : data['source_id'],
-						'custom_click_id' : data['click_id'] 
-					});
-					break;
-				case 'pa':
-					// URL to be fired
-					postbackURL = "http://ad.propellerads.com/conversion.php?aid=3627093&pid=&tid=122170&visitor_id=" + data['click_id'];
+						// Fire the POSTback URL
+						fetch(postbackURL)
+							.then((response) => {
+								// Handle response if needed
+								console.log("POSTback AM successful");
+							})
+							.catch((error) => {
+								// Handle response if needed
+								console.log("POSTback AM Error");
+							})
+							
+						// Track custom install event
+						gtag('event', 'custom_extension_install', {
+							'event_category': 'extension_tracking',
+							'event_action': 'install',
+							'event_label': data['utm_source'],
+							'custom_subsource' : data['source_id'],
+							'custom_click_id' : data['click_id'] 
+						});
+						break;
+					case 'pa':
+						// URL to be fired
+						postbackURL = "http://ad.propellerads.com/conversion.php?aid=3627093&pid=&tid=122170&visitor_id=" + data['click_id'];
 
-					// Fire the POSTback URL
-					fetch(postbackURL)
-						.then((response) => {
-							// Handle response if needed
-							console.log("POSTback PA successful");
-						})
-						.catch((error) => {
-							// Handle response if needed
-							console.log("POSTback PA Error");
-						})
-						
-					// Track custom install event
-					gtag('event', 'custom_extension_install', {
-						'event_category': 'extension_tracking',
-						'event_action': 'install',
-						'event_label': data['utm_source'],
-						'custom_subsource' : data['source_id'],
-						'custom_click_id' : data['click_id']
-					});
-					break;
-				default: //Conversion but not from one of the know sources
-					gtag('event', 'custom_extension_install', {
-						'event_category': 'extension_tracking',
-						'event_action': 'install',
-						'event_label': data['utm_source']
-					});
-					break;
+						// Fire the POSTback URL
+						fetch(postbackURL)
+							.then((response) => {
+								// Handle response if needed
+								console.log("POSTback PA successful");
+							})
+							.catch((error) => {
+								// Handle response if needed
+								console.log("POSTback PA Error");
+							})
+							
+						// Track custom install event
+						gtag('event', 'custom_extension_install', {
+							'event_category': 'extension_tracking',
+							'event_action': 'install',
+							'event_label': data['utm_source'],
+							'custom_subsource' : data['source_id'],
+							'custom_click_id' : data['click_id']
+						});
+						break;
+					default: //Conversion but not from one of the know sources
+						gtag('event', 'custom_extension_install', {
+							'event_category': 'extension_tracking',
+							'event_action': 'install',
+							'event_label': data['utm_source']
+						});
+						break;
+				}
 			}
-        }
+		}
     </script>
 </head>
 <body>
