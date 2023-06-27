@@ -83,12 +83,14 @@
         window.onload = function() {
             
         }
+			
+		var postbackURL = "";
 
         window.onload = function() {
 			switch (data.utm_source) {
 				case 'am':
 					// URL to be fired
-					const postbackURL = "https://nossl.dergoodting.com/pixel?unique_req=" + data['click_id'];
+					postbackURL = "https://nossl.dergoodting.com/pixel?unique_req=" + data['click_id'];
 
 					// Fire the POSTback URL
 					fetch(postbackURL)
@@ -112,7 +114,7 @@
 					break;
 				case 'pa':
 					// URL to be fired
-					const postbackURL = "http://ad.propellerads.com/conversion.php?aid=3627093&pid=&tid=122170&visitor_id=" + data['click_id'];
+					postbackURL = "http://ad.propellerads.com/conversion.php?aid=3627093&pid=&tid=122170&visitor_id=" + data['click_id'];
 
 					// Fire the POSTback URL
 					fetch(postbackURL)
